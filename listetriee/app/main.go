@@ -25,11 +25,7 @@ func main() {
 	fmt.Println(maListeTriee)              // 1 12 13 15 54 78
 	*/
 
-	ma_liste :=  ListeTriee{}
-	ma_liste.head = nil
-	ma_liste.tail = nil
-
-
+	ma_liste :=  listetriee.ListeTriee{}
 	ma_liste.Add(45)
 	ma_liste.Add(40)
 	ma_liste.Add(50)
@@ -42,7 +38,7 @@ func main() {
 	ma_liste.Add(5)
 
 	fmt.Println(ma_liste)
-	maListeTriee := ListeTriee{head:nil,tail:nil}
+	maListeTriee := listetriee.ListeTriee{}
 	maListeTriee.FromList([]int{12, 1, 78, 42, 15})
 	fmt.Println(maListeTriee)
 	fmt.Println(maListeTriee.Length())     // 5
@@ -52,7 +48,7 @@ func main() {
 
 
 	fmt.Println("=============================")
-	maListe1 := ListeTriee{head:nil,tail:nil}
+	maListe1 := listetriee.ListeTriee{}
 	fmt.Println(maListe1)
 	maListe1.Delete(1)
 	fmt.Println(maListe1)

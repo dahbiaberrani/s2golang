@@ -1,19 +1,18 @@
+package listetriee
 
-package listetriee // import "listetriee"
 import (
 	"strconv"
 )
 
 //TYPES
-type cellule struct{
+type Cellule struct{
 	valeur  int
-	suivant  *cellule
-
+	suivant  *Cellule
 }
+
 type ListeTriee struct {
-	head *cellule
-	tail *cellule
-	
+	Head *Cellule
+	Tail *Cellule	
 }
 
 func (list ListeTriee) String() string{
@@ -22,9 +21,9 @@ func (list ListeTriee) String() string{
 	stringValue :="{"
 	courant := list.head
 	for courant != nil{
-		//1. traitement de la cellule courante :
+		//1. traitement de la Cellule courante :
 		stringValue += strconv.Itoa(courant.valeur)+" ->"
-		//2. passer à la cellule suivante 
+		//2. passer à la Cellule suivante 
 		courant = courant.suivant
 	}	
 	stringValue +="nil}"	
@@ -34,25 +33,25 @@ func (list ListeTriee) String() string{
 //Add ajoute un élément *à sa bonne place* dans la liste
 func (list *ListeTriee) Add(elt int){
 	// cas de la liste vide
-	nouvcellule := cellule{valeur:elt}
-	nouvcellule.valeur = elt
+	nouvCellule := Cellule{valeur:elt}
+	nouvCellule.valeur = elt
 	if  list.head == nil {
-		list.head = &nouvcellule
-		list.tail = &nouvcellule
-		nouvcellule.suivant = nil
+		list.head = &nouvCellule
+		list.tail = &nouvCellule
+		nouvCellule.suivant = nil
 	}else{
-		nouvcellule := cellule{valeur:elt}
+		nouvCellule := Cellule{valeur:elt}
 		//cas d'insertion au debut 
 		if elt <= list.head.valeur{	
-			nouvcellule.suivant = list.head
-			list.head = &nouvcellule
+			nouvCellule.suivant = list.head
+			list.head = &nouvCellule
 		}else{
 			// cas d'insertion à la fin 
 
 			if elt >= list.tail.valeur{
-				list.tail.suivant = &nouvcellule
-				list.tail = &nouvcellule
-				nouvcellule.suivant= nil
+				list.tail.suivant = &nouvCellule
+				list.tail = &nouvCellule
+				nouvCellule.suivant= nil
 			}else{
 				//cas d'insertion au milieu
 
@@ -63,8 +62,8 @@ func (list *ListeTriee) Add(elt int){
 					precedcourant = courant
 					courant = courant.suivant
 				}
-				nouvcellule.suivant = courant
-				precedcourant.suivant= &nouvcellule
+				nouvCellule.suivant = courant
+				precedcourant.suivant= &nouvCellule
 			}
 		}
 	}
