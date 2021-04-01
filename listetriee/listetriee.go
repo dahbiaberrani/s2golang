@@ -2,6 +2,7 @@ package listetriee
 
 import (
 	"strconv"
+	
 )
 
 //TYPES
@@ -77,6 +78,22 @@ func(ListeTriee *ListeTriee)FromList(goList []int) {
 			ListeTriee.Add(goList[i])
 		}
 }	
+
+func FromList1(goList []int) ListeTriee{
+	maliste = ListeTriee{}
+	maliste.FromList(goList)
+	return maliste
+}
+func (list ListeTriee) ToList() []int{
+	goList [] int
+	courant := list.head
+	for courant != nil{	
+		goList += (courant.valeur)+","
+		courant = courant.suivant
+	}
+	return goList
+}
+
 func (list ListeTriee) Length() int{
 	var compteur int = 0
 	courant := list.head
@@ -86,16 +103,7 @@ func (list ListeTriee) Length() int{
 	}
 	return compteur
 }
-func (list ListeTriee) ToList() []int{
-    //ToList renvoie une tranche contenant les éléments de la liste
-	res := []int{}
-	courant := list.head
-	for courant != nil{
-		res= append(res,courant.valeur)
-		courant=courant.suivant
-	}
-	return res
-}
+
 func (list *ListeTriee) Delete(elt int)bool{
 		// Cas particulier 1 : la liste est vide
 	if list.head == nil {

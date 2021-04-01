@@ -17,4 +17,9 @@ func main(){
 	fmt.Print(head)
 	listechainee.Append(34,head)
 	fmt.Print(head)
+
+
+
+
+	
 }

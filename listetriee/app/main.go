@@ -51,6 +51,7 @@ func main() {
 	maListe1 := listetriee.ListeTriee{}
 	fmt.Println(maListe1)
 	maListe1.Delete(1)
+	
 	fmt.Println(maListe1)
 
 	maListe1.Add(12)
@@ -62,7 +63,9 @@ func main() {
 
 
 	maListe1.FromList([]int{12, 1, 78, 42, 15})
-	fmt.Println(maListe1)
+	fmt.Println("voila ma liste chainée",maListe1)	
+	fmt.Println("voila ma liste ")
+	fmt.Println(maListe1.ToList())
 	maListe1.Delete(1)
 	fmt.Println(maListe1)
 	maListe1.Delete(15)
@@ -76,6 +79,9 @@ func main() {
 
 	maListe1.Replace(12, 13)
 	fmt.Println(maListe1)
+	
+	//fmt.Println(listetriee.FromList1([]int{12, 1, 78, 42, 15}))
+	//FromList1([]int{12, 1, 78, 42, 15})
 
 
 	
