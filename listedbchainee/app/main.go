@@ -6,30 +6,40 @@ import (
 	"listedbchainee"
 
 ) 
+
+
 func main() {
-	liste := Liste{}
+	liste := listedbchainee.Liste{}
+	fmt.Println(liste)
+	liste.Cons(15)
+	liste.Cons(3)
 	liste.Cons(12)
-	liste.Cons(42)
-	liste.Cons(55)
+	liste.Cons(2)
 	fmt.Println(liste)
 	fmt.Printf("Longueur de la liste = %d\n", liste.Length())
 
+
+
+    liste1 := listedbchainee.Liste{}
+	liste1.Remove(2)
+	fmt.Println("liste1 =", liste1)
 	liste.Append(100)
 	liste.Append(200)
-	fmt.Println(liste)
+	fmt.Println("liste =" ,liste)
 
-	liste2 := Liste{}
-	liste2.Remove(100)
-	fmt.Println("liste2 =", liste2)
+	liste.Remove(2)
+	fmt.Println("liste =", liste)
+	liste.Cons(2)
+	liste.Remove(3)
+	fmt.Println("liste =", liste)
+	liste.Remove(15)
+	fmt.Println("liste =", liste)
 
-	liste3 := FromSlice([]int{10, 20, 3, 1})
-	fmt.Println(liste3)
+	fmt.Printf("Longueur de la liste = %d\n", liste.Length())
 
-	liste3.Remove(10)
-	fmt.Println(liste3)
-	liste3.Remove(3)
-	fmt.Println(liste3)
-	liste3.Remove(42)
+
+	liste3 := listedbchainee.FromSlice([]int{10, 20, 3, 1})
 	fmt.Println(liste3)
 
 }
+
