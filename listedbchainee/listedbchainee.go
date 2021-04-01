@@ -42,11 +42,11 @@ func (ls *Liste) Cons(elt int) {
 	ls.nbElts ++
 }
 
-/*
+
 // Length renvoie le nombre d'éléments dans la liste
 func (ls Liste) Length() int {
 
-	return  nbElts
+	return  ls.nbElts
 }
 
 // Empty teste si la liste est vide
@@ -58,11 +58,25 @@ func (ls Liste) Empty() bool {
 
 // Append ajoute elt à la fin de la liste
 func (ls *Liste) Append(elt int) {
-	nouv := &cellule{elt,ls.queue}
-	ls.queue = nouv	
-	ls.nbElts++
+	nouv := &cellule{elt, ls.queue ,ls.tete}
+
+	// Cas particulier : ls était vide
+	if ls.tete == nil {
+		ls.tete = nouv
+		ls.nbElts ++
+		return
+	}
+
+	// Cas général : on se place sur la dernière cellule et on lui ajoute un lien vers nouv
+	curr := ls.tete
+	for curr.suivant != nil {
+		curr = curr.suivant
+	}
+	curr.suivant = nouv
+	ls.nbElts ++
 		
 }
+
 // Remove supprime un élément dans la liste
 func (ls *Liste) Remove(elt int) {
 		// Cas particulier 1 : la liste est vide
@@ -72,52 +86,81 @@ func (ls *Liste) Remove(elt int) {
 		// Cas particulier 2 : l'elt  est en tete
 	if ls.tete.valeur == elt {
 		ls.tete = ls.tete.suivant
-		ls.tete.suivant = nil
+		ls.nbElts--
 		return
 		}
 	// cas générale 
 	curr := ls.tete
-	prec := nil
+	prec := curr
 	for curr != nil && curr.valeur != elt {
 		prec = curr
 		curr = curr.suivant 
 		
 	}
-	if (curr != nil && cur.valeur == elt){
-		prec = curr.suivant 
-		cur.suivant = prec
+	if (curr != nil && curr.valeur == elt){
+		curr = curr.suivant
+		prec.suivant = curr
+		curr = prec.suivant
+		ls.nbElts--
 	}
+
+}
+// ToSlice crée une tranche à partir d'une liste
+func (ls Liste) ToSlice() []int {
+	res := []int{}
+	curr := ls.tete
+	for curr != nil {
+		res = append(res, curr.valeur)
+		curr = curr.suivant
+	}
+	return res
+}
+
+// FromSlice crée une liste à partir d'une tranche
+func FromSlice(tab []int) Liste {
+	res := Liste{}
+	for i := len(tab) - 1; i >= 0; i-- {
+		res.Cons(tab[i])
+	}
+	return res
 }
 
 
-*/
+
 
 
 
 func main() {
 	liste := Liste{}
 	fmt.Println(liste)
+	liste.Cons(15)
+	liste.Cons(3)
 	liste.Cons(12)
-	liste.Cons(42)
-	liste.Cons(55)
+	liste.Cons(2)
 	fmt.Println(liste)
-	/*fmt.Printf("Longueur de la liste = %d\n", liste.Length())
+	fmt.Printf("Longueur de la liste = %d\n", liste.Length())
 
+
+
+    liste1 := Liste{}
+	liste1.Remove(2)
+	fmt.Println("liste1 =", liste1)
 	liste.Append(100)
 	liste.Append(200)
-	fmt.Println(liste)
+	fmt.Println("liste =" ,liste)
 
-	liste2 := Liste{}
-	liste2.Remove(100)
-	fmt.Println("liste2 =", liste2)
+	liste.Remove(2)
+	fmt.Println("liste =", liste)
+	liste.Cons(2)
+	liste.Remove(3)
+	fmt.Println("liste =", liste)
+	liste.Remove(15)
+	fmt.Println("liste =", liste)
 
+	fmt.Printf("Longueur de la liste = %d\n", liste.Length())
 
-
-	liste3.Remove(10)
+	
+	liste3 := FromSlice([]int{10, 20, 3, 1})
 	fmt.Println(liste3)
-	liste3.Remove(3)
-	fmt.Println(liste3)
-	liste3.Remove(42)
-	fmt.Println(liste3)
-*/
+
 }
