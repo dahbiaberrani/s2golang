@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	mapile := pileslice.CreerPile()
+	mapile := pilechainee.CreerPile()
 	//fmt.Println(mapile.Sommet())
 	fmt.Println(mapile)
 	fmt.Println(mapile.EstVide())
@@ -23,7 +23,7 @@ func main() {
 	fmt.Println(mapile)
 	//fmt.Println(mapile.Depiler())
 	
-	pile := pileslice.FromSlice([]int{1, 10, 100})
+	pile := pilechainee.FromSlice([]int{1, 10, 100})
 	pile.Empiler(1000)
 	fmt.Println(pile)
 	fmt.Println(pile.ToSlice()) // [1 10 100 1000]

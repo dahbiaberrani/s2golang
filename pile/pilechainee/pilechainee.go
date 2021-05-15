@@ -6,7 +6,7 @@ import(
 )
 
 type Pile struct {
-	corps liste.Liste
+	corps listechainee.Liste
 	}
 
 func CreerPile() Pile {
@@ -29,7 +29,8 @@ func (p Pile) Sommet() (int, error){
 	if p.EstVide() {
 		return 0, errors.New("Impossible, la pile est vide")
 	} else {
-		return p.corps.tete.valeur, nil
+		tab := p.ToSlice()
+		return tab[0], nil
 	}
 }
 
@@ -38,15 +39,16 @@ func (p *Pile) Depiler() (int, error) {
 
 	sommet, err := p.Sommet()
 	if err == nil {
-		p.corps.tete = p.corps.tete.suivant
+		p.corps = listechainee.FromSlice(p.ToSlice()[1:])
 	}	
 	return sommet, err
-
 }
 
 func  FromSlice(slice [] int) Pile{
 	pile := CreerPile()
-	pile.corps = listechainee.FromSlice(slice)
+	for i := range slice {
+		pile.Empiler(slice[i])
+	}
 	return pile
 }
 
