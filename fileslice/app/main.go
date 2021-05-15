@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	file := fileslice.FromSlice(1, 10, 100)
+	file := fileslice.FromSlice([] int{1, 10, 100})
 	file.Ajouter(1000)
 
 	fmt.Println(file.ToSlice())
