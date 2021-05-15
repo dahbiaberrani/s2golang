@@ -2,7 +2,6 @@ package listetriee
 
 import (
 	"strconv"
-	
 )
 
 //TYPES
@@ -84,6 +83,7 @@ func FromList1(goList []int) ListeTriee{
 	maliste.FromList(goList)
 	return maliste
 }
+
 func (list ListeTriee) ToList() []int{
 	goList [] int
 	courant := list.head
