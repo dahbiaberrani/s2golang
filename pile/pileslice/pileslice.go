@@ -3,11 +3,10 @@ package pileslice
 import(
 	"fmt"
 	"errors"
-	"listechainee"
 )
 
 type Pile struct {
-	corps liste.Liste
+	corps [] int
 	}
 
 func CreerPile() Pile {
