@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fileslice"
+	"file/filechainee"
 	"fmt"
 )
 
 func main() {
-	file := fileslice.FromSlice([] int{1, 10, 100})
+	file := filechainee.FromSlice([] int{1, 10, 100})
 	file.Ajouter(1000)
 
 	fmt.Println(file.ToSlice())

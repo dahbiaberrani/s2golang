@@ -2,7 +2,8 @@
 package pilechainee
 import(
  "listechainee"
- "errors"
+ "fmt"
+
 )
 
 type Pile struct {
@@ -27,7 +28,7 @@ func (p *Pile) Empiler(elm int){
 
 func (p Pile) Sommet() (int, error){
 	if p.EstVide() {
-		return 0, errors.New("Impossible, la pile est vide")
+		return 0, fmt.Errorf("Impossible, la pile est vide")
 	} else {
 		tab := p.ToSlice()
 		return tab[0], nil
