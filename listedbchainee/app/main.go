@@ -61,5 +61,9 @@ func main() {
 	fmt.Println("liste =" ,liste)
 	fmt.Println(liste.ReverseString())
 	*/
+
+	liste4 := listedbchainee.FromSlice([]int{10})
+	liste4.Remove(10)
+	fmt.Println(liste4)
 }
 

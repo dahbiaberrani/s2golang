@@ -55,10 +55,9 @@ func (ls *Liste) Cons(elt int) {
 		ls.tete = nouv
 		ls.queue = nouv
 	}else{
-		ls.tete.precedant = nouv
+		ls.tete.precedant = nouv	
 		ls.tete = nouv
 	}
-		
 	ls.nbElts++
 }
 // Append ajoute elt à la fin de la liste
@@ -80,7 +79,6 @@ func (ls *Liste) Append(elt int) {
 
 // Length renvoie le nombre d'éléments dans la liste
 func (ls Liste) Length() int {
-
 	return  ls.nbElts
 }
 
@@ -89,8 +87,15 @@ func (ls Liste) Empty() bool {
 	return ls.tete == nil
 		
 }
+/*func(list *Liste) First(elt int) *cellule {
 
-
+	curr : liste.tete 
+	for curr != nil && curr.valeur !=elt{
+		curr = curr.suivant
+	}
+	return curr
+}
+*/
 
 
 // Remove supprime un élément dans la liste
@@ -113,6 +118,7 @@ func (ls *Liste) Remove(elt int) {
 		ls.nbElts--
 		return
 	}
+	
 	// cas générale 
 	curr := ls.tete
 	
