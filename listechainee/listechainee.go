@@ -1,7 +1,6 @@
 package listechainee
 import (
 	"fmt"
-
 )
 type cellule struct {
 	valeur  int

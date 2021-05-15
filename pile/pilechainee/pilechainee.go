@@ -1,12 +1,12 @@
-package pileslice
 
+package pilechainee
 import(
-	"fmt"
-	"errors"
+ "listechainee"
+ "errors"
 )
 
 type Pile struct {
-	corps []int
+	corps liste.Liste
 	}
 
 func CreerPile() Pile {
@@ -14,32 +14,22 @@ func CreerPile() Pile {
 }
 
 func (p Pile) String() string {
-	res := "{"
-	if !p.EstVide() {
-		for i := range p.corps {
-			res += fmt.Sprintf("%d", p.corps[i]) + ", "
-		}
-	}
-	if res != "{" {
-		return res[:len(res)-2]+"}"
-	} else {
-		return res+"}"
-	}
+	return "{"+p.corps.String()+"}"
 }
 
 func (p Pile) EstVide() bool{
-	return len(p.corps) == 0
+	return p.corps.Empty()
 }
 
 func (p *Pile) Empiler(elm int){
-	p.corps = append(p.corps, elm)
+	p.corps.Cons(elm)
 }
 
 func (p Pile) Sommet() (int, error){
 	if p.EstVide() {
 		return 0, errors.New("Impossible, la pile est vide")
 	} else {
-		return p.corps[len(p.corps) -1], nil
+		return p.corps.tete.valeur, nil
 	}
 }
 
@@ -48,7 +38,7 @@ func (p *Pile) Depiler() (int, error) {
 
 	sommet, err := p.Sommet()
 	if err == nil {
-		p.corps = p.corps[:len(p.corps) -1 ]
+		p.corps.tete = p.corps.tete.suivant
 	}	
 	return sommet, err
 
@@ -56,14 +46,10 @@ func (p *Pile) Depiler() (int, error) {
 
 func  FromSlice(slice [] int) Pile{
 	pile := CreerPile()
-	if len(slice) > 0 {
-		for i := range slice {
-			pile.Empiler(slice[i])
-		}
-	}
+	pile.corps = listechainee.FromSlice(slice)
 	return pile
 }
 
 func (p Pile) ToSlice() [] int{
-	return p.corps
+	return p.corps.ToSlice()
 }
