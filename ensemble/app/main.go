@@ -9,7 +9,6 @@ import (
 func main() {
 	monEns := ensemble.Ensemble{}
 	fmt.Println("Nb d'éléments dans monEns = ", monEns.Card())
-
 	monEns.Ajouter(12)
 	monEns.Ajouter(100)
 	monEns.Ajouter(42)
