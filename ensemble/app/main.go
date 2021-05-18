@@ -8,8 +8,10 @@ import (
 
 func main() {
 	monEns := ensemble.Ensemble{}
+	fmt.Println(monEns.EstVide())
 	fmt.Println("Nb d'éléments dans monEns = ", monEns.Card())
 	monEns.Ajouter(12)
+	fmt.Println(monEns.EstVide())
 	monEns.Ajouter(100)
 	monEns.Ajouter(42)
 	monEns.Ajouter(100)  // Tentative d'ajouter un doublo
